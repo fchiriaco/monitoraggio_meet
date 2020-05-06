@@ -1,0 +1,9 @@
+select data,nome_partecipante,sum(durata)/60 from dati where codice_riunione = 'NKJEKCESAO' and (data between '2020-04-28' and '2020-04-29')  group by nome_partecipante
+
+
+select data,nome_partecipante,sum(durata)/60 from dati where email_organizzatore = 'patrizia.coluzzi@iisvicodevivo.gov.it' and (data between '2020-04-28' and '2020-04-29')  group by nome_partecipante
+
+SELECT data,codice_riunione,email_organizzatore,count(*) as numero_partecipanti FROM `dati` group by codice_riunione
+
+
+select sum(durata),nome_partecipante from dati where codice_riunione = 'HRAXUWUVZA' group by nome_partecipante order by sum(durata)
