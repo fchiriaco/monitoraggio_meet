@@ -23,7 +23,7 @@ $tabella = $_SESSION["tabella"];
   
   <style type="text/css">
   
-	 #divform, #divfile, #divcodice_riunione, #divemail_organizzatore,#divnome_partecipante,#divrisultati,#divwait 
+	 #divform, #divfile, #divcodice_riunione, #divemail_organizzatore,#divnome_partecipante,#divrisultati,#divwait, #divriep_date  
 	  
 	   {
 		   display:none;
@@ -55,12 +55,14 @@ $tabella = $_SESSION["tabella"];
 				<ul class="dropdown-menu" role="menu">
 					<?php if($_SESSION["admin"]) { ?>
 					<li><a href="#" id="csv">Upload dati da CSV Generato da G SUITE</a></li>
+					<li><a style="background:#dc143c;color:#ffffff" href="truncate.php" id="truncate">Cancella tutti i dati dal database</a></li>
 					<?php } ?>
 					<li><a href="#" id="riepilogodatiriunione">Riepilogo dati riunione</a></li>
 					<li><a href="#" id="presentiriunione">Presenti alla riunione</a></li>
 					<?php if(!$_SESSION["user"]) { ?>
 					<li><a href="#" id="riepilogoorganizzatore">Riepilogo riunioni di un dato organizzatore</a></li>
 					<li><a href="#" id="riepilogopartecipante">Riepilogo per nome partecipante</a></li>
+					<li><a href="#" id="riepilogodate">Riepilogo riunioni per data</a></li>
 					<?php } ?>
 					<li><a href="#" id="logout">Chiudi sessione</a></li>
 				</ul>
@@ -134,6 +136,19 @@ $tabella = $_SESSION["tabella"];
 					    </div>
 						
 					</div>
+					
+					<div class="form-group" id="divriep_date">
+						
+						<div class="form-group">
+							<div class="row">
+							<div class="col-xs-12 col-sm-4">
+							<label for="diniziod">Data inizio</label><input  class="form-control" type="text" name="diniziod" id="diniziod"> <label for="dfined">Data fine</label><input class="form-control"  type="text" name="dfined" id="dfined">
+							</div>
+							</div>
+					    </div>
+						
+					</div>
+					
 					
 					
 					<div class="form-group">

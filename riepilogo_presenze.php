@@ -87,7 +87,7 @@ while($r = $rs->fetch_assoc())
 $valred .= '</tbody></table>';
 
 $valret .= '<h3>Organizzatore: ' . $organizzatore . '</h3>';
-$valret .= '<h3>Ora inizio: ' . $oracollegamento . '</h3>';
+//$valret .= '<h3>Ora inizio: ' . $oracollegamento . '</h3>';
 $valret .= '<h3>Durata riunione in minuti: ' . $duratari . '</h3>';
 $valret .= '<h3>Numero partecipanti: ' . $totale_partecipanti . '</h3>';
 

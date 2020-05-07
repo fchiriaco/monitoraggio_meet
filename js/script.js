@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	var azione = 0;
-	var azioni = ["uploadcsv.php","riepilogo_riunione.php","riepilogo_presenze.php","riepilogo_organizzatore.php","riepilogo_partecipante.php"];
+	var azioni = ["uploadcsv.php","riepilogo_riunione.php","riepilogo_presenze.php","riepilogo_organizzatore.php","riepilogo_partecipante.php","riepilogo_perdate.php"];
 	
 		
 		$('#mainform').submit(
@@ -92,6 +92,10 @@ $(document).ready(function(){
 	$( "#dfine" ).datepicker( $.datepicker.regional[ "it" ] );	
 	$( "#dfinep" ).datepicker( $.datepicker.regional[ "it" ] );	
 	
+	$( "#diniziod" ).datepicker( $.datepicker.regional[ "it" ] );	
+	$( "#dfined" ).datepicker( $.datepicker.regional[ "it" ] );	
+	
+	
 	$( "#dinizio" ).change(function(){
 				
 				$( "#dfine" ).datepicker( "option", "minDate", $( "#dinizio" ).datepicker("getDate")) ;
@@ -122,6 +126,19 @@ $(document).ready(function(){
 	
 	
 	
+	$( "#diniziod" ).change(function(){
+				
+				$( "#dfined" ).datepicker( "option", "minDate", $( "#diniziod" ).datepicker("getDate")) ;
+		
+	});
+	
+	
+	$( "#dfined" ).change(function(){
+				
+				$( "#diniziod" ).datepicker( "option", "maxDate", $( "#dfined" ).datepicker("getDate")) ;
+		
+	});
+	
 	
 	
 	
@@ -134,6 +151,7 @@ $(document).ready(function(){
 		$('#divcodice_riunione2').hide();
 		$('#divemail_organizzatore').hide();
 		$('#divnome_partecipante').hide();
+		$('#divriep_date').hide();
 		$('#divfile').show();
 		azione = 1;
 		
@@ -146,6 +164,7 @@ $(document).ready(function(){
 		$('#divcodice_riunione2').hide();
 		$('#divemail_organizzatore').hide();
 		$('#divnome_partecipante').hide();
+		$('#divriep_date').hide();
 		$('#divcodice_riunione').show();
 		
 		azione = 2;
@@ -159,6 +178,7 @@ $(document).ready(function(){
 		$('#divcodice_riunione').hide();
 		$('#divemail_organizzatore').hide();
 		$('#divnome_partecipante').hide();
+		$('#divriep_date').hide();
 		$('#divcodice_riunione2').show();
 		
 		azione = 3;
@@ -172,6 +192,7 @@ $(document).ready(function(){
 		$('#divcodice_riunione').hide();
 		$('#divcodice_riunione2').hide();
 		$('#divnome_partecipante').hide();
+		$('#divriep_date').hide();
 		$('#divemail_organizzatore').show();
 		
 		azione = 4;
@@ -186,10 +207,28 @@ $(document).ready(function(){
 		$('#divcodice_riunione').hide();
 		$('#divcodice_riunione2').hide();
 		$('#divemail_organizzatore').hide();
+		$('#divriep_date').hide();
 		$('#divnome_partecipante').show();
 		azione = 5;
 		
 	});
+	
+	$('#riepilogodate').click(function() {
+		
+		$('#divform').show();
+		$('#divfile').hide();
+		$('#divcodice_riunione').hide();
+		$('#divcodice_riunione2').hide();
+		$('#divemail_organizzatore').hide();
+		$('#divriep_date').hide();
+		$('#divnome_partecipante').hide();
+		$('#divriep_date').show();
+		azione = 6;
+		
+	});
+	
+	
+		
 	
 	$('#logout').click(function() {
 		
@@ -199,6 +238,7 @@ $(document).ready(function(){
 		$('#divcodice_riunione2').hide();
 		$('#divemail_organizzatore').hide();
 		$('#divnome_partecipante').hide();
+		$('#divriep_date').hide();
 		$.get( "logout.php", function( data ) {
 					window.location.href="index.php";
 					
