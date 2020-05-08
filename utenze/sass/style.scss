@@ -1,0 +1,46 @@
+@import "partial/mixins";
+@import "partial/variabili";
+
+
+.ricerca {
+	
+	@include border-radius(5px);
+}
+
+@media screen and (max-width: 768px)
+{
+	
+	#send {width:100%;}
+}
+
+.tabella {
+	
+	margin-top:10px;
+	
+	.colorehead {
+	
+					background: $colore_bg_tabella_header;
+					color:$colore_tabella_header;
+				}
+}
+
+
+#datiadd{
+	position:absolute;
+	display:none;
+	background:$colore_bg_dati_add;
+	border:$border_dati_add;
+	padding:10px;
+	top:3px;
+	left:10%;
+	width:$width_dati_add;
+	height:$height_dati_add;
+	@include border-radius(15px);
+	overflow: auto;
+	
+}
+
+#datiupd{
+	@extend #datiadd;
+	
+}
