@@ -1,7 +1,7 @@
 
 <?php
 
-	if(!isset($_SESSION["login"]) || $_SESSION["login"] != "AUT_1_2015#" || $_SESSION["uname"] != "admin")
+	if (!isset($_SESSION["auth"]) || $_SESSION["auth"] !== true || !isset($_SESSION["admin"]) || empty($_SESSION["admin"]))
 	{
 		session_destroy();
 		header("location: {$dirsitoscript}login.php");

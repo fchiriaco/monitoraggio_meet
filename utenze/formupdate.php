@@ -1,15 +1,15 @@
 <?php
 session_start();
 include("configlocale.php");
-include("{$dirsito}config.php");
-include("{$dirsito}libreria/util_func2.php");
-if(!isset($_SESSION["login"]) || $_SESSION["login"] != "AUT_1_2015#" || $_SESSION["uname"] != "admin")
+include("{$dirsito}configdb.php");
+include("{$dirsito}util_func2.php");
+if (!isset($_SESSION["auth"]) || $_SESSION["auth"] !== true || !isset($_SESSION["admin"]) || empty($_SESSION["admin"]))
 {
 	session_destroy();
-	header("location: {$dirsitoscript}login.php");
+	header("location: {$dirsitoscript}index.php");
 	exit;
 }
-include($dirsito . "libreria/util_dbnew.php");
+include($dirsito . "util_dbnew.php");
 $con = connessione(HOST,USER,PWD,DBNAME);
 $chiave = mysqli_real_escape_string($con,$_POST["chiave"]);
 if($tipo_chiave == "s")

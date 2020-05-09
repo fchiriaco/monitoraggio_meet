@@ -42,6 +42,7 @@ $_SESSION["admin"] = (strtoupper($r["codadmin"]) == strtoupper($codice_scuola)? 
 $_SESSION["user"] = (strtoupper($r["coduser"]) == strtoupper($codice_scuola)? 1:0);
 $_SESSION["auth"] = true;
 $_SESSION["istituto"] = $r["nome_scuola"];
+$_SESSION["email"] = $r["email"];
 echo "1";
 exit;
 

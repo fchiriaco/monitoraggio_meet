@@ -1,15 +1,19 @@
 <?php
 session_start();
 include("configlocale.php");
-include("{$dirsito}config.php");
-include("{$dirsito}libreria/util_func2.php");
-if(!isset($_SESSION["login"]) || $_SESSION["login"] != "AUT_1_2015#" || $_SESSION["uname"] != "admin")
+include("{$dirsito}configdb.php");
+include("{$dirsito}util_func2.php");
+
+/* alla fine dello script vi è una parte di codice specifica per questa applicazione, occorre toglierla per riutilizzare la procedura per casi generici */
+
+
+if (!isset($_SESSION["auth"]) || $_SESSION["auth"] !== true || !isset($_SESSION["admin"]) || empty($_SESSION["admin"]))
 {
 	session_destroy();
-	header("location: {$dirsitoscript}login.php");
+	header("location: {$dirsitoscript}index.php");
 	exit;
 }
-include($dirsito . "libreria/util_dbnew.php");
+include($dirsito . "util_dbnew.php");
 $con = connessione(HOST,USER,PWD,DBNAME);
 
 
@@ -169,6 +173,35 @@ else
 	$sqlins .= $sqlins2 . ")";
 
 $ret = esegui_query($con,$sqlins);
+
+
+/* parte di codice aggiunta solo per questa applicazione toglierla per renderla generica*/
+
+$lastid = mysqli_insert_id($con);
+$sql = "select * from {$tabella} where id={$lastid}";
+$rs = esegui_query($con,$sql);
+$r = getrecord($rs);
+
+$sql = "CREATE TABLE IF NOT EXISTS {$r["nome_tabella"]} (
+  `id` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `data` datetime NOT NULL,
+  `email_organizzatore` varchar(255) NOT NULL,
+  `durata` bigint(12) NOT NULL,
+  `nome_partecipante` varchar(255) NOT NULL,
+  `esterno` tinyint(1) NOT NULL,
+  `codice_riunione` varchar(20) NOT NULL,
+  `client` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `data` (`data`),
+  KEY `email_organizzatore` (`email_organizzatore`),
+  KEY `nome_partecipante` (`nome_partecipante`)
+) ENGINE=MyISAM AUTO_INCREMENT=1;";
+
+$rit = esegui_query($con,$sql);
+
+/* fine parte aggiunta, da eliminare per rendere generica */
+
+
 if($ret === false)
 	echo "Errore!!";
 else

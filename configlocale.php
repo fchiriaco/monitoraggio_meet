@@ -1,32 +1,5 @@
 <?php
-
-/*
-$hostmysql = "62.149.150.65";
-$usermysql = "Sql120708";
-$pwdmysql = "290392f5";
-$dbmysql = "Sql120708_4";
-$tabella_codici = "codici_auth";
-$token = "fchiriaco_1965";
-*/
-
-
-$hostmysql = "localhost";
-$usermysql = "root";
-$pwdmysql = "Fgm172826#";
-$dbmysql = "monmeet";
-$tabella_codici = "codici_auth";
-$token = "fchiriaco_1965";
-
-
-/*
-$hostmysql = "localhost";
-$usermysql = "iisvicouser";
-$pwdmysql = "dddkxj3dfhccc";
-$dbmysql = "iisvicodb";
-$tabella_codici = "codici_auth";
-$token = "fchiriaco_1965";
-*/
-
+include("configdb.php");
 
 $con = new mysqli($hostmysql,$usermysql,$pwdmysql,$dbmysql);
 if ($con -> connect_errno) {

@@ -1,14 +1,13 @@
 <?php session_start(); ?>
 <?php
 
-	
-	include("configut.php");
-	include("../configlocale.php");
-	include("../util_func2.php");
-	if(!isset($_SESSION["login"]) || $_SESSION["login"] != "AUT_1_2015#" || $_SESSION["uname"] != "admin")
+	include("configlocale.php");
+	include("{$dirsito}configdb.php");
+	include("{$dirsito}util_func2.php");
+	if (!isset($_SESSION["auth"]) || $_SESSION["auth"] !== true || !isset($_SESSION["admin"]) || empty($_SESSION["admin"]))
 	{
 		session_destroy();
-		header("location: {$dirsitoscript}login.php");
+		header("location: {$dirsitoscript}index.php");
 		exit;
 	}
 	
@@ -43,9 +42,9 @@
 		
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<a class="btn btn-danger" href="<?php echo $_SERVER["HTTP_REFERER"]; ?>" title="Torna Indietro"><span class="glyphicon glyphicon-backward"></span></a>
+				<a class="btn btn-danger" href="<?php echo (!empty($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"]: $dirsitoscript . "index.php" ); ?>" title="Torna Indietro"><span class="glyphicon glyphicon-backward"></span></a>
 				&nbsp;
-				<a class="btn btn-danger" href="<?php echo $dirsitoscript ?>logout.php" title="Logout"> <span style class="glyphicon glyphicon-log-out"></span> </a>
+				<a class="btn btn-danger" href="logout.php" title="Logout"> <span style class="glyphicon glyphicon-log-out"></span> </a>
 				<br><br>
 			</div>
 		</div>	

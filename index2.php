@@ -54,8 +54,9 @@ $tabella = $_SESSION["tabella"];
 			</button>
 				<ul class="dropdown-menu" role="menu">
 					<?php if($_SESSION["admin"]) { ?>
-					<li><a href="#" id="csv">Upload dati da CSV Generato da G SUITE</a></li>
-					<li><a style="background:#dc143c;color:#ffffff" href="truncate.php" id="truncate">Cancella tutti i dati dal database</a></li>
+					<li><a style="background:#17a2b8;color:#ffffff" href="#" id="csv">Upload dati da CSV Generato da G SUITE</a></li>
+					<li><a style="background:#4cae4c;color:#ffffff" href="utenze/index.php" id="utenze">Gestione utenze scuole</a></li>
+					<li><a style="background:#dc3545;color:#ffffff" href="truncate.php" id="truncate">Cancella tutti i dati dal database</a></li>
 					<?php } ?>
 					<li><a href="#" id="riepilogodatiriunione">Riepilogo dati riunione</a></li>
 					<li><a href="#" id="presentiriunione">Presenti alla riunione</a></li>
