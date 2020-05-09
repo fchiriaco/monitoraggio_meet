@@ -67,7 +67,7 @@ $orderby = "nome_scuola";
 
 $max_num_rec_vis = 10;
 
-$campi_obbligatori_ins_upd = array("codadmin","codice","coduser","nome_scuola","nome_tabella",);
+$campi_obbligatori_ins_upd = array("codadmin","codice","coduser","email","nome_scuola","nome_tabella",);
 $campi_unici_tabella = array("codadmin","codice","coduser","email","nome_scuola","nome_tabella");
 $tipo_campi_unici_tabella = array("s","s","s","s","s","s");
 
