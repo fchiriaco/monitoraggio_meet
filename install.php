@@ -68,6 +68,11 @@ if(isset($_POST["submit"]))
 	$sql = "insert into {$tabella_codici} values(null,'{$codice_admin}','{$codice_s_admin}','{$codice_user}','{$tabella_dati}','{$nome_scuola}','{$email}')";
 	$con->query($sql);
 	
+	$sql1 = "select * from {$tabella_codici}";
+	$rs = $con->query($sql1);
+	$r = $rs->fetch_assoc();
+	
+	
 $sql = "CREATE TABLE IF NOT EXISTS {$r["nome_tabella"]} (
   `id` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `data` datetime NOT NULL,
