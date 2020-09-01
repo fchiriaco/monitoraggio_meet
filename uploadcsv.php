@@ -11,8 +11,8 @@ include('configlocale.php');
 
 $datiok = true;
 
-$mesi_it = array("gen","mag","giu","lug","ago");
-$mesi_en = array("jan","may","jun","jul","aug");
+$mesi_it = array("gen","mag","giu","lug","ago","set","ott","dic");
+$mesi_en = array("jan","may","jun","jul","aug","sept","oct","dec");
 
 
 
